@@ -10,8 +10,8 @@
 
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-
     <title>{{ env('APP_NAME') }}</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -34,7 +34,7 @@
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li>
-                        <a href="#" class="nav__link">Home</a>
+                        <a href="/" class="nav__link">Home</a>
                     </li>
 
                     <!--=============== DROPDOWN 1 ===============-->
@@ -50,14 +50,15 @@
                                         <i class="ri-flashlight-line"></i>
                                     </div>
 
-                                    <span class="dropdown__title">Most viewed courses</span>
+                                    <span class="dropdown__title">Rules and Safety</span>
 
                                     <ul class="dropdown__list">
                                         <li>
-                                            <a href="#" class="dropdown__link">HTML for beginners</a>
+                                            <a href="{{ route('traffic.laws') }}" class="dropdown__link">Traffic laws
+                                                and fines</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="dropdown__link">Advanced CSS</a>
+                                            <a href="{{route('traffic.safety')}}" class="dropdown__link">Traffic Safety</a>
                                         </li>
                                         <li>
                                             <a href="#" class="dropdown__link">JavaScript OOP</a>
@@ -197,16 +198,18 @@
                     </li>
 
                     <li>
-                        <a href="#" class="nav__link">Sign In</a>
+                        <a href="{{ route('login') }}" class="nav__link">Sign In</a>
                     </li>
                     <li>
-                        <a href="#" class="nav__link">Register</a>
+                        <a href="{{ route('register') }}" class="nav__link">Register</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
-
+    <main class="main">
+        {{ $slot }}
+    </main>
     <!--=============== MAIN JS ===============-->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
